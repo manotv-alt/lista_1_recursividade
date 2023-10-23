@@ -8,16 +8,18 @@ typedef struct {
     int y;
 } coordenadas;
 
-void lab (vector<vector<coordenadas>> &labirinto, vector<vector<bool>> visitados, int linha, int coluna, int *resultado) {
+void lab (vector<vector<coordenadas>> &labirinto, vector<vector<bool>> &visitados, int linha, int coluna, int *resultado) {
     if(visitados[linha][coluna] == true) {
         *resultado = 2;
+        return;
     }
     if(labirinto[linha][coluna].x == 0 and labirinto[linha][coluna].y == 0) {
         *resultado = 1;
+        return;
     }
-    
-    linha = labirinto[linha][coluna].x;
-    coluna = labirinto[linha][coluna].y;
+
+    linha = labirinto[linha][coluna].y;
+    coluna = labirinto[linha][coluna].x;
     visitados[linha][coluna] = true;
         
     lab(labirinto, visitados, linha, coluna, resultado);
@@ -34,13 +36,14 @@ int main () {
 
     for(int i = 0; i < linhas; i++) {
         for(int j = 0; j < colunas; j++) {
-            cin >> labirinto[i][j].x >> labirinto[i][j].y;
+
+            cin >> labirinto[i][j].y >> labirinto[i][j].x;
         }
     }
+    
+    cin >> y_inicial >> x_inicial;
 
-    cin >> x_inicial >> y_inicial;
-
-    lab(labirinto, visitados, x_inicial, y_inicial, &resultado);
+    lab(labirinto, visitados, y_inicial, x_inicial, &resultado);
 
     if(resultado == 1) cout << "VENCE" << endl;
     else {
