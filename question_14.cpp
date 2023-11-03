@@ -40,7 +40,7 @@ int main () {
             if(final[i] > resposta) resposta = final[i];
         }
 
-        cout << "reposta:" << resposta << endl;
+        cout << resposta << endl;
         casos--;
     }
 

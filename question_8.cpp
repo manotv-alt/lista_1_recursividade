@@ -24,6 +24,13 @@ int main() {
 
     for(int i = 0; i < linhas; i++) {
         int j,k;
+        
+        if(EOF and (i+1) < linhas) {
+            j = 0;
+            k = 0;
+            familias[j].push_back(k);
+            familias[k].push_back(j);
+        }
 
         cin >> j >> k;
 

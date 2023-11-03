@@ -49,4 +49,6 @@ int main() {
     }
 
     cout << sol(valor, 6) << endl;
+
+    return 0;
 }
